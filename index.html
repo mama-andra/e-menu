@@ -8,7 +8,7 @@
     <meta property="og:title" content="Dimsum Mama Andra - Menu Online" />
     <meta property="og:description" content="Pesan via Menu Online x WhatsApp lebih mudah & praktis!" />
     
-   <!-- Link gambar menggunakan domain produksi GitHub Pages Anda (Wajib HTTPS & Case-Sensitive) -->
+    <!-- Link gambar menggunakan domain produksi GitHub Pages Anda (Wajib HTTPS & Case-Sensitive) -->
     <meta property="og:image" content="https://mama-andra.github.io/e-menu/banner2.jpg" />
     <meta property="og:image:secure_url" content="https://mama-andra.github.io/e-menu/banner2.jpg" />
     <meta property="og:image:type" content="image/jpeg" />
@@ -24,8 +24,14 @@
     <meta property="og:url" content="https://mama-andra.github.io/e-menu/" />
     <meta property="og:type" content="website" />
 
-    <!-- Redirect Otomatis ke Web App -->
-    <meta http-equiv="refresh" content="3; url=https://sites.google.com/view/mama-andra/menu-dimsum">
+    <!-- ⚠️ SOLUSI: Menggunakan JavaScript Redirect (Aman untuk Crawler WhatsApp) -->
+    <script>
+        // Mengalihkan pengguna setelah 1 detik (1000 milidetik)
+        // Menggunakan location.replace agar halaman redirect ini tidak menyampah di history "Back" browser pelanggan
+        setTimeout(function() {
+            window.location.replace("https://sites.google.com/view/mama-andra/menu-dimsum");
+        }, 1000);
+    </script>
 
     <title>Dimsum Mama Andra - Redirecting...</title>
 
