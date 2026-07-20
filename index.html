@@ -1,71 +1,164 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  
+  <!-- ========================================================== -->
+  <!-- KUNCI UTAMA: METADATA OPEN GRAPH (WHATSAPP PREVIEW)        -->
+  <!-- Mengacu visual estetika file 1fced9ba-fa04-4f5b-a2c2-727a39e6a89e.jpg -->
+  <!-- ========================================================== -->
+  <title>Dimsum Mama Andra - Menu Online</title>
+  <meta name="description" content="Pesan via Menu Online x WhatsApp lebih mudah & praktis!">
+  
+  <!-- WhatsApp, Telegram, & Facebook Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mama-andra.my.id/">
+  <meta property="og:title" content="Dimsum Mama Andra - Menu Online">
+  <meta property="og:description" content="Pesan via Menu Online x WhatsApp lebih mudah & praktis!">
+  <!-- Tautan gambar share (Direkomendasikan rasio 1200x630 piksel, di bawah 300KB) -->
+  <meta property="og:image" content="https://mama-andra.my.id/images/og-share.jpg">
+  <meta property="og:image:secure_url" content="https://mama-andra.my.id/images/og-share.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
 
-    <!-- OPEN GRAPH TAGS (Untuk Preview WhatsApp/Social Media) -->
-    <meta property="og:title" content="Dimsum Mama Andra - Menu Online" />
-    <meta property="og:description" content="Pesan via Menu Online x WhatsApp lebih mudah & praktis!" />
-    
-    <!-- Link gambar menggunakan domain produksi GitHub Pages Anda (Wajib HTTPS & Case-Sensitive) -->
-    <meta property="og:image" content="https://mama-andra.github.io/e-menu/banner3.jpg" />
-    <meta property="og:image:secure_url" content="https://mama-andra.github.io/e-menu/banner3.jpg" />
-    <meta property="og:image:type" content="image/jpeg" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Banner Dimsum Mama Andra" />
-    
-    <!-- Link alternatif (fallback) untuk legacy crawler device lama -->
-    <link rel="image_src" href="https://mama-andra.github.io/e-menu/banner3.jpg" />
-    <meta itemprop="image" content="https://mama-andra.github.io/e-menu/banner3.jpg" />
-    
-    <!-- og:url harus sama persis dengan alamat web yang Anda sebar di WhatsApp -->
-    <meta property="og:url" content="https://mama-andra.github.io/e-menu/" />
-    <meta property="og:type" content="website" />
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://mama-andra.my.id/">
+  <meta name="twitter:title" content="Dimsum Mama Andra - Menu Online">
+  <meta name="twitter:description" content="Pesan via Menu Online x WhatsApp lebih mudah & praktis!">
+  <meta name="twitter:image" content="https://mama-andra.my.id/images/og-share.jpg">
 
-    <!-- ⚠️ SOLUSI: Menggunakan JavaScript Redirect (Aman untuk Crawler WhatsApp) -->
-    <script>
-        // Mengalihkan pengguna setelah 1 detik (1000 milidetik)
-        // Menggunakan location.replace agar halaman redirect ini tidak menyampah di history "Back" browser pelanggan
-        setTimeout(function() {
-            window.location.replace("https://mama-andra.blogspot.com/");
-        }, 1000);
-    </script>
+  <style>
+    /* Mengunci gulir browser utama agar tidak rubber-band / bergetar di iOS Safari */
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: #F4F7F5; /* Tema Matcha Mint Cream khas Mama Andra Store */
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
 
-    <title>Dimsum Mama Andra - Redirecting...</title>
+    /* Iframe menutupi penuh satu layar tanpa celah/border */
+    iframe {
+      border: none;
+      width: 100%;
+      height: 100%;
+      display: block;
+      margin: 0;
+      padding: 0;
+    }
 
-    <style>
-        body { 
-            font-family: sans-serif; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            height: 100vh; 
-            background: #0f172a; 
-            color: white; 
-            margin: 0;
-        }
-        .loader { 
-            text-align: center; 
-        }
-        .loader h1 {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-        .loader p {
-            color: #94a3b8;
-        }
-        .loader a {
-            color: #22c55e;
-            text-decoration: underline;
-        }
-    </style>
+    /* Screen Preloader Premium khas Zettbos */
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #F4F7F5;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.5s ease-out;
+    }
+
+    .loader-card {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(46, 111, 64, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 30px;
+      border-radius: 28px;
+      box-shadow: 0 10px 30px rgba(46, 111, 64, 0.08);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      width: 250px;
+    }
+
+    /* Animasi Spinner Ring Bertema Matcha */
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid rgba(46, 111, 64, 0.1);
+      border-top: 4px solid #2E6F40;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    .loader-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #1A2E22;
+      letter-spacing: 0.05em;
+      margin: 0;
+    }
+
+    .loader-subtitle {
+      font-size: 9px;
+      color: #5A6F62;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
 </head>
 <body>
-    <div class="loader">
-        <h1>Mengarahkan ke Menu...</h1>
-        <p>Silakan tunggu atau <a href="https://mama-andra.blogspot.com/</a> jika tidak dialihkan otomatis.</p>
+
+  <!-- Screen Preloader (Mencegah layar berkedip putih saat iframe memuat server Google) -->
+  <div id="preloader">
+    <div class="loader-card">
+      <div class="spinner"></div>
+      <div>
+        <h3 class="loader-title">MAMA ANDRA</h3>
+        <p class="loader-subtitle">Menghubungkan Domain Premium...</p>
+      </div>
     </div>
+  </div>
+
+  <!-- IFRAME WRAPPER UTAMA -->
+  <!-- sandbox disesuaikan agar performa aman & popup transaksi WhatsApp di iOS lancar -->
+  <iframe 
+    id="gasFrame"
+    src="https://script.google.com/macros/s/AKfycbx2HjWKb8_HPzY7kJY7uH_0xDXXK2w4i9o9QVDvFGBbwdoaldx4KFcaYZ-7m0i6Bx2Y6w/exec" 
+    allow="geolocation; microphone; camera"
+    sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-modals allow-downloads">
+  </iframe>
+
+  <script>
+    const frame = document.getElementById('gasFrame');
+    const preloader = document.getElementById('preloader');
+
+    // Menghilangkan preloader begitu iframe selesai memuat isi webapp Google
+    frame.onload = function() {
+      preloader.style.opacity = '0';
+      setTimeout(function() {
+        preloader.style.display = 'none';
+      }, 500);
+    };
+
+    // Fallback Pengaman: Hilangkan preloader setelah 4.5 detik jika koneksi internet klien lambat
+    setTimeout(function() {
+      if (preloader.style.display !== 'none') {
+        preloader.style.opacity = '0';
+        setTimeout(function() {
+          preloader.style.display = 'none';
+        }, 500);
+      }
+    }, 4500);
+  </script>
 </body>
 </html>
