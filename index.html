@@ -6,14 +6,11 @@
   
   <!-- ========================================================== -->
   <!-- KUNCI UTAMA: METADATA OPEN GRAPH (WHATSAPP PREVIEW)        -->
-  <!-- Mengacu visual estetika file 1fced9ba-fa04-4f5b-a2c2-727a39e6a89e.jpg -->
   <!-- ========================================================== -->
   <title>Dimsum Mama Andra - Menu Online</title>
   <meta name="description" content="Pesan via Menu Online, Dapatkan Diskon Hingga 50%!">
   
-  <!-- ========================================== -->
-  <!-- FAVICON & TOUCH ICON (TAB BROWSER & MOBILE)-->
-  <!-- ========================================== -->
+  <!-- FAVICON & TOUCH ICON (TAB BROWSER & MOBILE) -->
   <link rel="icon" type="image/x-icon" href="https://mama-andra.my.id/images/favicon.ico">
   <link rel="shortcut icon" type="image/x-icon" href="https://mama-andra.my.id/images/favicon.ico">
   <link rel="apple-touch-icon" sizes="180x180" href="https://mama-andra.my.id/images/favicon.ico">
@@ -23,7 +20,6 @@
   <meta property="og:url" content="https://mama-andra.my.id/">
   <meta property="og:title" content="Dimsum Mama Andra - Menu Online">
   <meta property="og:description" content="Pesan via Menu Online, Dapatkan Diskon Hingga 50%!">
-  <!-- Tautan gambar share (Direkomendasikan rasio 1200x630 piksel, di bawah 300KB) -->
   <meta property="og:image" content="https://mama-andra.my.id/images/og-share.jpg">
   <meta property="og:image:secure_url" content="https://mama-andra.my.id/images/og-share.jpg">
   <meta property="og:image:type" content="image/jpeg">
@@ -108,15 +104,6 @@
       margin: 0;
     }
 
-    .loader-subtitle {
-      font-size: 9px;
-      color: #5A6F62;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      font-weight: 600;
-      margin: 0;
-    }
-
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
@@ -125,7 +112,7 @@
 </head>
 <body>
 
-  <!-- Screen Preloader (Mencegah layar berkedip putih saat iframe memuat server Google) -->
+  <!-- Screen Preloader -->
   <div id="preloader">
     <div class="loader-card">
       <div class="spinner"></div>
@@ -136,10 +123,9 @@
   </div>
 
   <!-- IFRAME WRAPPER UTAMA -->
-  <!-- sandbox disesuaikan agar performa aman & popup transaksi WhatsApp di iOS lancar -->
   <iframe 
     id="gasFrame"
-    src="https://script.google.com/macros/s/AKfycbx2HjWKb8_HPzY7kJY7uH_0xDXXk2w4i9o9QVDvFGBbwdoaldx4KFcaYZ-7m0i6BX2y6w/exec" 
+    src="about:blank" 
     allow="geolocation; microphone; camera"
     sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-modals allow-downloads">
   </iframe>
@@ -148,12 +134,23 @@
     const frame = document.getElementById('gasFrame');
     const preloader = document.getElementById('preloader');
 
+    // Base URL Web App Google Apps Script Utama Anda
+    const baseUrl = "https://script.google.com/macros/s/AKfycbx2HjWKb8_HPzY7kJY7uH_0xDXXk2w4i9o9QVDvFGBbwdoaldx4KFcaYZ-7m0i6BX2y6w/exec";
+
+    // Tangkap parameter Query String dari browser (misalnya: ?id=260724003)
+    const queryParams = window.location.search;
+
+    // Suntikkan URL ke iframe lengkap beserta parameternya sebelum dimuat
+    frame.src = baseUrl + queryParams;
+
     // Menghilangkan preloader begitu iframe selesai memuat isi webapp Google
     frame.onload = function() {
-      preloader.style.opacity = '0';
-      setTimeout(function() {
-        preloader.style.display = 'none';
-      }, 500);
+      if (frame.src !== "about:blank") {
+        preloader.style.opacity = '0';
+        setTimeout(function() {
+          preloader.style.display = 'none';
+        }, 500);
+      }
     };
 
     // Fallback Pengaman: Hilangkan preloader setelah 4.5 detik jika koneksi internet klien lambat
