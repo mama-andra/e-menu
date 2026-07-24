@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  
+  <!-- ========================================================== -->
+  <!-- KUNCI UTAMA: METADATA OPEN GRAPH TANPA GAMBAR (CLEAN TEXT) -->
+  <!-- Khusus untuk Nota Digital agar tidak memicu OG Image Banner -->
+  <!-- ========================================================== -->
+  <title>Nota Resmi Digital - Dimsum Mama Andra</title>
+  <meta name="description" content="Nota Resmi Digital Transaksi D'masakin Mama Andra">
+  
+  <!-- FAVICON & TOUCH ICON (TAB BROWSER & MOBILE) -->
+  <link rel="icon" type="image/x-icon" href="https://mama-andra.my.id/images/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="https://mama-andra.my.id/images/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://mama-andra.my.id/images/favicon.ico">
+  
+  <!-- WhatsApp & Social Open Graph Tags (Murni Teks, TANPA og:image) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mama-andra.my.id/nota/">
+  <meta property="og:title" content="Nota Resmi Digital - Dimsum Mama Andra">
+  <meta property="og:description" content="Nota Resmi Digital Transaksi D'masakin Mama Andra">
+
+  <!-- Twitter Card Meta Tags (Murni Teks, TANPA twitter:image) -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:url" content="https://mama-andra.my.id/nota/">
+  <meta name="twitter:title" content="Nota Resmi Digital - Dimsum Mama Andra">
+  <meta name="twitter:description" content="Nota Resmi Digital Transaksi D'masakin Mama Andra">
+
+  <style>
+    /* Mengunci gulir browser utama agar tidak rubber-band / bergetar di iOS Safari */
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: #F4F7F5; /* Tema Matcha Mint Cream khas Mama Andra Store */
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    /* Iframe menutupi penuh satu layar tanpa celah/border */
+    iframe {
+      border: none;
+      width: 100%;
+      height: 100%;
+      display: block;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Screen Preloader Premium */
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #F4F7F5;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.5s ease-out;
+    }
+
+    .loader-card {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(46, 111, 64, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 30px;
+      border-radius: 28px;
+      box-shadow: 0 10px 30px rgba(46, 111, 64, 0.08);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      width: 250px;
+    }
+
+    /* Animasi Spinner Ring Bertema Matcha */
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid rgba(46, 111, 64, 0.1);
+      border-top: 4px solid #2E6F40;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    .loader-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #1A2E22;
+      letter-spacing: 0.05em;
+      margin: 0;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Screen Preloader -->
+  <div id="preloader">
+    <div class="loader-card">
+      <div class="spinner"></div>
+      <div>
+        <h3 class="loader-title">MEMUAT NOTA RESMI</h3>
+      </div>
+    </div>
+  </div>
+
+  <!-- IFRAME WRAPPER UTAMA -->
+  <iframe 
+    id="gasFrame"
+    src="about:blank" 
+    allow="geolocation; microphone; camera"
+    sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-modals allow-downloads">
+  </iframe>
+
+  <script>
+    const frame = document.getElementById('gasFrame');
+    const preloader = document.getElementById('preloader');
+
+    // Base URL Web App Google Apps Script Utama Anda
+    const baseUrl = "https://script.google.com/macros/s/AKfycbx2HjWKb8_HPzY7kJY7uH_0xDXXk2w4i9o9QVDvFGBbwdoaldx4KFcaYZ-7m0i6BX2y6w/exec";
+
+    // Tangkap parameter Query String dari browser (misalnya: ?id=260724003)
+    const queryParams = window.location.search;
+
+    // Suntikkan URL ke iframe lengkap beserta parameternya sebelum dimuat
+    frame.src = baseUrl + queryParams;
+
+    // Menghilangkan preloader begitu iframe selesai memuat isi nota dari server Google
+    frame.onload = function() {
+      if (frame.src !== "about:blank") {
+        preloader.style.opacity = '0';
+        setTimeout(function() {
+          preloader.style.display = 'none';
+        }, 500);
+      }
+    };
+
+    // Fallback Pengaman: Hilangkan preloader setelah 4.5 detik jika koneksi internet klien lambat
+    setTimeout(function() {
+      if (preloader.style.display !== 'none') {
+        preloader.style.opacity = '0';
+        setTimeout(function() {
+          preloader.style.display = 'none';
+        }, 500);
+      }
+    }, 4500);
+  </script>
+</body>
+</html>
