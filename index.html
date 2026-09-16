@@ -71,6 +71,7 @@
       transition: opacity 0.5s ease-out;
     }
 
+    /* STREAMING_CHUNK:Styling page layout and preloader screen... -->
     .loader-card {
       background: rgba(255, 255, 255, 0.9);
       border: 1px solid rgba(46, 111, 64, 0.1);
@@ -104,6 +105,7 @@
       margin: 0;
     }
 
+    /* STREAMING_CHUNK:Adding animation keyframes for loading spinner... -->
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
@@ -122,12 +124,17 @@
     </div>
   </div>
 
-  <!-- IFRAME WRAPPER UTAMA -->
+  <!-- 
+    IFRAME WRAPPER UTAMA DENGAN PERLINDUNGAN EKSPANSI KEAMANAN:
+    - allow-popups-to-escape-sandbox: Memastikan tab baru yang dibuka TIDAK mewarisi cap sandbox,
+      sehingga Instagram dan Google Review TIDAK DIBLOKIR oleh COOP (ERR_BLOCKED_BY_RESPONSE).
+    - allow-top-navigation-by-user-activation: Mengizinkan navigasi aman saat dipicu sentuhan pengguna.
+  -->
   <iframe 
     id="gasFrame"
     src="about:blank" 
-    allow="geolocation; microphone; camera"
-    sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-modals allow-downloads">
+    allow="geolocation; microphone; camera; clipboard-read; clipboard-write; web-share"
+    sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation allow-modals allow-downloads">
   </iframe>
 
   <script>
@@ -162,6 +169,30 @@
         }, 500);
       }
     }, 4500);
+
+    /**
+     * ====================================================================
+     * POSTMESSAGE ESCAPE BRIDGE (TOP-LEVEL LINK DISPATCHER)
+     * ====================================================================
+     * Menangkap sinyal pembukaan URL eksternal (Instagram, Google Review, Maps, dll.)
+     * yang dikirimkan oleh Web App Google Apps Script dari dalam iframe.
+     * Karena jendela induk (mama-andra.my.id) adalah dokumen utama (bukan sandbox),
+     * window.open yang dieksekusi di sini menghasilkan tab baru 100% independen
+     * dan bebas dari pemblokiran Cross-Origin-Opener-Policy (COOP).
+     */
+    window.addEventListener('message', function(event) {
+      try {
+        if (event && event.data && event.data.type === 'OPEN_EXTERNAL_URL' && event.data.url) {
+          const targetUrl = String(event.data.url).trim();
+          if (targetUrl) {
+            // Eksekusi pembukaan tab baru langsung oleh domain utama mama-andra.my.id
+            window.open(targetUrl, '_blank', 'noopener,noreferrer');
+          }
+        }
+      } catch (err) {
+        console.warn("Gagal mengeksekusi postMessage link dispatcher:", err);
+      }
+    });
   </script>
 </body>
 </html>
