@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   
   <!-- ========================================================== -->
-  <!-- KUNCI UTAMA: METADATA OPEN GRAPH (WHATSAPP PREVIEW)        -->
+  <!-- METADATA OPEN GRAPH & SEO (WHATSAPP & SOCIAL PREVIEW)      -->
   <!-- ========================================================== -->
   <title>Dimsum Mama Andra - Menu Online</title>
   <meta name="description" content="Pesan via Menu Online x WhatsApp lebih mudah & praktis">
@@ -40,9 +40,13 @@
       padding: 0;
       width: 100%;
       height: 100%;
+      height: 100vh;
+      height: 100dvh;
       overflow: hidden;
-      background-color: #F4F7F5; /* Tema Matcha Mint Cream khas Mama Andra Store */
+      background-color: #F4F7F5;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     /* Iframe menutupi penuh satu layar tanpa celah/border */
@@ -50,62 +54,82 @@
       border: none;
       width: 100%;
       height: 100%;
+      height: 100vh;
+      height: 100dvh;
       display: block;
       margin: 0;
       padding: 0;
     }
 
-    /* Screen Preloader Premium khas Zettbos */
+    /* Screen Preloader Premium dengan Flexbox Centering Presisi */
     #preloader {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
+      width: 100%;
+      height: 100%;
+      height: 100vh;
+      height: 100dvh;
       background-color: #F4F7F5;
       z-index: 9999;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      transition: opacity 0.5s ease-out;
+      box-sizing: border-box;
+      transition: opacity 0.4s ease-out, visibility 0.4s ease-out;
+      pointer-events: all;
     }
 
-    /* STREAMING_CHUNK:Styling page layout and preloader screen... -->
     .loader-card {
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid rgba(46, 111, 64, 0.1);
-      backdrop-filter: blur(10px);
-      padding: 30px;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(46, 111, 64, 0.15);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 28px 24px;
       border-radius: 28px;
-      box-shadow: 0 10px 30px rgba(46, 111, 64, 0.08);
+      box-shadow: 0 15px 35px rgba(46, 111, 64, 0.08);
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 15px;
-      width: 250px;
+      justify-content: center;
+      gap: 16px;
+      width: 240px;
+      max-width: 85%;
+      box-sizing: border-box;
+      margin: auto;
     }
 
-    /* Animasi Spinner Ring Bertema Matcha */
+    /* Animasi Spinner Ring Bertema Matcha dengan Kompatibilitas iOS Safari */
     .spinner {
       width: 50px;
       height: 50px;
-      border: 4px solid rgba(46, 111, 64, 0.1);
+      border: 4px solid rgba(46, 111, 64, 0.12);
       border-top: 4px solid #2E6F40;
       border-radius: 50%;
-      animation: spin 1s linear infinite;
+      -webkit-animation: spin 0.9s linear infinite;
+      animation: spin 0.9s linear infinite;
+      box-sizing: border-box;
     }
 
     .loader-title {
-      font-size: 15px;
-      font-weight: 700;
+      font-size: 13px;
+      font-weight: 800;
       color: #1A2E22;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
       margin: 0;
+      text-transform: uppercase;
+      font-family: inherit;
     }
 
-    /* STREAMING_CHUNK:Adding animation keyframes for loading spinner... -->
+    @-webkit-keyframes spin {
+      0% { -webkit-transform: rotate(0deg); }
+      100% { -webkit-transform: rotate(360deg); }
+    }
+
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
@@ -114,12 +138,12 @@
 </head>
 <body>
 
-  <!-- Screen Preloader -->
+  <!-- Screen Preloader Terpusat -->
   <div id="preloader">
     <div class="loader-card">
       <div class="spinner"></div>
       <div>
-        <h3 class="loader-title">MEMUAT MENU ONLINE</h3>
+        <h3 class="loader-title">Memuat Menu Online</h3>
       </div>
     </div>
   </div>
@@ -140,6 +164,7 @@
   <script>
     const frame = document.getElementById('gasFrame');
     const preloader = document.getElementById('preloader');
+    let hasFrameLoadedOnce = false;
 
     // Base URL Web App Google Apps Script Utama Anda
     const baseUrl = "https://script.google.com/macros/s/AKfycbx2HjWKb8_HPzY7kJY7uH_0xDXXk2w4i9o9QVDvFGBbwdoaldx4KFcaYZ-7m0i6BX2y6w/exec";
@@ -150,44 +175,82 @@
     // Suntikkan URL ke iframe lengkap beserta parameternya sebelum dimuat
     frame.src = baseUrl + queryParams;
 
+    /**
+     * Menghilangkan layar preloader secara bersih
+     */
+    function hidePreloader() {
+      if (preloader && preloader.style.display !== 'none') {
+        preloader.style.opacity = '0';
+        preloader.style.pointerEvents = 'none';
+        setTimeout(function() {
+          preloader.style.display = 'none';
+        }, 400);
+      }
+    }
+
     // Menghilangkan preloader begitu iframe selesai memuat isi webapp Google
     frame.onload = function() {
       if (frame.src !== "about:blank") {
-        preloader.style.opacity = '0';
-        setTimeout(function() {
-          preloader.style.display = 'none';
-        }, 500);
+        hasFrameLoadedOnce = true;
+        hidePreloader();
       }
     };
 
-    // Fallback Pengaman: Hilangkan preloader setelah 4.5 detik jika koneksi internet klien lambat
+    // Fallback Pengaman: Hilangkan preloader setelah 4 detik jika jaringan klien lambat
     setTimeout(function() {
-      if (preloader.style.display !== 'none') {
-        preloader.style.opacity = '0';
-        setTimeout(function() {
-          preloader.style.display = 'none';
-        }, 500);
-      }
-    }, 4500);
+      hidePreloader();
+    }, 4000);
 
     /**
      * ====================================================================
-     * POSTMESSAGE ESCAPE BRIDGE (TOP-LEVEL LINK DISPATCHER)
+     * ANTI-BLANK ENGINE: MENANGANI KEMBALINYA USER DARI APLIKASI LAIN
      * ====================================================================
-     * Menangkap sinyal pembukaan URL eksternal (Instagram, Google Review, Maps, dll.)
+     * Ketika pengguna membuka WhatsApp, Maps, atau Instagram lalu menekan tombol
+     * "Kembali / Back", browser iOS/Android memicu event 'pageshow' (BFCache)
+     * dan 'visibilitychange'. Event ini memastikan layar preloader tidak pernah
+     * macet/membeku lagi setelah webapp sudah berhasil dimuat sekali.
+     */
+    window.addEventListener('pageshow', function(event) {
+      if (hasFrameLoadedOnce || (event && event.persisted)) {
+        hidePreloader();
+      }
+    });
+
+    document.addEventListener('visibilitychange', function() {
+      if (document.visibilityState === 'visible' && hasFrameLoadedOnce) {
+        hidePreloader();
+      }
+    });
+
+    /**
+     * ====================================================================
+     * POSTMESSAGE ESCAPE BRIDGE (DECOUPLED LINK DISPATCHER)
+     * ====================================================================
+     * Menangkap sinyal pembukaan URL eksternal (Google Maps, WhatsApp, Instagram, dll.)
      * yang dikirimkan oleh Web App Google Apps Script dari dalam iframe.
-     * Karena jendela induk (mama-andra.my.id) adalah dokumen utama (bukan sandbox),
-     * window.open yang dieksekusi di sini menghasilkan tab baru 100% independen
-     * dan bebas dari pemblokiran Cross-Origin-Opener-Policy (COOP).
+     * Menggunakan anchor decoupled temporer tanpa meninggalkan jejak riwayat tab kosong
+     * sehingga saat pengguna kembali, mereka tetap berada di halaman menu webapp.
      */
     window.addEventListener('message', function(event) {
       try {
         if (event && event.data && event.data.type === 'OPEN_EXTERNAL_URL' && event.data.url) {
           const targetUrl = String(event.data.url).trim();
-          if (targetUrl) {
-            // Eksekusi pembukaan tab baru langsung oleh domain utama mama-andra.my.id
-            window.open(targetUrl, '_blank', 'noopener,noreferrer');
-          }
+          if (!targetUrl) return;
+
+          // Buat elemen tautan sementara yang terisolasi dari window history
+          const link = document.createElement('a');
+          link.href = targetUrl;
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+          document.body.appendChild(link);
+          link.click();
+          
+          setTimeout(function() {
+            try { document.body.removeChild(link); } catch (e) {}
+          }, 300);
+
+          // Pastikan preloader tetap tersembunyi
+          hidePreloader();
         }
       } catch (err) {
         console.warn("Gagal mengeksekusi postMessage link dispatcher:", err);
