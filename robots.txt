@@ -1,0 +1,4 @@
+User-agent: *
+     Allow: /
+
+     Sitemap: https://mama-andra.my.id/sitemap.xml
