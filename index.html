@@ -189,6 +189,7 @@
       right: 0;
       bottom: 0;
       z-index: 10;
+      background-color: #F4F7F5;
     }
 
     #preloader {
@@ -277,17 +278,20 @@
       animation: pulseGlow 2s ease-in-out infinite;
     }
 
-    /* Natural Crawler Background Layer (Googlebot-friendly tanpa clip:rect) */
-    #crawlerSemanticContainer {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1;
-      padding: 24px;
-      color: #1A2E22;
-      background-color: #F4F7F5;
-      box-sizing: border-box;
+    /* W3C & Google-Compliant Accessible Bot Layer (Anti-Bocor Desktop) */
+    .crawler-semantic-layer {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+      z-index: -1 !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
     }
   </style>
 </head>
@@ -406,53 +410,53 @@
   </div>
 
   <!-- ========================================================== -->
-  <!-- 6. NATURAL CRAWLER SEO CONTENT LAYER (GOOGLEBOT FRIENDLY)  -->
+  <!-- 6. ACCESSIBLE SEMANTIC CRAWLER LAYER (GOOGLEBOT ONLY)      -->
   <!-- ========================================================== -->
-  <main id="crawlerSemanticContainer" class="max-w-2xl mx-auto space-y-6">
-    <header class="space-y-2">
-      <h1 class="text-xl sm:text-2xl font-bold text-[#1A2E22]">D'Masakin Dimsum by Mama Andra - Dimsum Mentai, Wonton &amp; Frozen Pasar Kemis Tangerang</h1>
-      <p class="text-sm text-[#5A6F62] leading-relaxed">
+  <main id="crawlerSemanticContainer" class="crawler-semantic-layer" aria-hidden="true">
+    <header>
+      <h1>D'Masakin Dimsum by Mama Andra - Dimsum Mentai, Wonton &amp; Frozen Pasar Kemis Tangerang</h1>
+      <p>
         Selamat datang di website resmi D'Masakin Dimsum by Mama Andra (Dimsum Mama Andra / Dmasakin Dimsum). Menyajikan aneka sajian dimsum ayam premium lezat, dimsum mentai tobiko bakar gurih, dimsum goreng isi keju lumer renyah, wonton chili oil khas dapur Mama Andra, wonton kuah creamy, kreasi unik Cake Dimsum &amp; Buket Dimsum perayaan, serta dimsum frozen higienis tanpa bahan pengawet di Pasar Kemis, Tangerang.
       </p>
     </header>
 
-    <section class="space-y-3">
-      <h2 class="text-lg font-bold text-[#2E6F40]">Pilihan Menu Dimsum Populer</h2>
-      <ul class="space-y-3 text-sm text-[#1A2E22]">
-        <li class="p-3 bg-white rounded-xl border border-emerald-100">
-          <h3 class="font-bold text-sm text-[#1A2E22]">Dimsum Kukus Klasik (Siomay Ayam Udang Premium)</h3>
-          <p class="text-xs text-[#5A6F62] mt-0.5">Dimsum kukus lembut dengan komposisi olahan daging ayam melimpah dan udang segar utuh. Disajikan hangat lengkap dengan racikan Chili Oil gurih pedas dan Saus Asam Manis khas Mama Andra.</p>
+    <section>
+      <h2>Pilihan Menu Dimsum Populer</h2>
+      <ul>
+        <li>
+          <h3>Dimsum Kukus Klasik (Siomay Ayam Udang Premium)</h3>
+          <p>Dimsum kukus lembut dengan komposisi olahan daging ayam melimpah dan udang segar utuh. Disajikan hangat lengkap dengan racikan Chili Oil gurih pedas dan Saus Asam Manis khas Mama Andra.</p>
         </li>
-        <li class="p-3 bg-white rounded-xl border border-emerald-100">
-          <h3 class="font-bold text-sm text-[#1A2E22]">Dimsum Mentai Tobiko Mozzarella Bakar</h3>
-          <p class="text-xs text-[#5A6F62] mt-0.5">Dimsum bakar dengan siraman saus mentai gurih berlimpah, taburan tobiko premium, dan lelehan keju mozzarella. Bebas pilih atau mix topping Mentai, Tartar, dan Keju tanpa biaya tambahan.</p>
+        <li>
+          <h3>Dimsum Mentai Tobiko Mozzarella Bakar</h3>
+          <p>Dimsum bakar dengan siraman saus mentai gurih berlimpah, taburan tobiko premium, dan lelehan keju mozzarella. Bebas pilih atau mix topping Mentai, Tartar, dan Keju tanpa biaya tambahan.</p>
         </li>
-        <li class="p-3 bg-white rounded-xl border border-emerald-100">
-          <h3 class="font-bold text-sm text-[#1A2E22]">Dimsum Goreng Isi Keju Lumer</h3>
-          <p class="text-xs text-[#5A6F62] mt-0.5">Garing renyah di luar, empuk dan padat isian daging di dalam dengan sensasi kejutan keju lumer yang gurih.</p>
+        <li>
+          <h3>Dimsum Goreng Isi Keju Lumer</h3>
+          <p>Garing renyah di luar, empuk dan padat isian daging di dalam dengan sensasi kejutan keju lumer yang gurih.</p>
         </li>
-        <li class="p-3 bg-white rounded-xl border border-emerald-100">
-          <h3 class="font-bold text-sm text-[#1A2E22]">Wonton Chili Oil &amp; Wonton Kuah Creamy</h3>
-          <p class="text-xs text-[#5A6F62] mt-0.5">Wonton lembut daging ayam pilihan dengan balutan bumbu chili oil pedas manis atau kuah kaldu creamy yang gurih segar.</p>
+        <li>
+          <h3>Wonton Chili Oil &amp; Wonton Kuah Creamy</h3>
+          <p>Wonton lembut daging ayam pilihan dengan balutan bumbu chili oil pedas manis atau kuah kaldu creamy yang gurih segar.</p>
         </li>
-        <li class="p-3 bg-white rounded-xl border border-emerald-100">
-          <h3 class="font-bold text-sm text-[#1A2E22]">Cake Dimsum &amp; Buket Dimsum Perayaan</h3>
-          <p class="text-xs text-[#5A6F62] mt-0.5">Alternatif kue ulang tahun unik, wisuda, dan arisan yang cantik, lezat, serta berkesan (Pemesanan H-5).</p>
+        <li>
+          <h3>Cake Dimsum &amp; Buket Dimsum Perayaan</h3>
+          <p>Alternatif kue ulang tahun unik, wisuda, dan arisan yang cantik, lezat, serta berkesan (Pemesanan H-5).</p>
         </li>
-        <li class="p-3 bg-white rounded-xl border border-emerald-100">
-          <h3 class="font-bold text-sm text-[#1A2E22]">Dimsum Frozen Higienis Siap Masak</h3>
-          <p class="text-xs text-[#5A6F62] mt-0.5">Persediaan dimsum beku higienis untuk keluarga di rumah, tahan hingga 1 bulan di freezer tanpa bahan pengawet kimia.</p>
+        <li>
+          <h3>Dimsum Frozen Higienis Siap Masak</h3>
+          <p>Persediaan dimsum beku higienis untuk keluarga di rumah, tahan hingga 1 bulan di freezer tanpa bahan pengawet kimia.</p>
         </li>
       </ul>
     </section>
 
-    <section class="space-y-2 p-4 bg-white rounded-xl border border-emerald-100 text-sm">
-      <h2 class="text-base font-bold text-[#2E6F40]">Lokasi Dapur &amp; Layanan Pengiriman</h2>
-      <p class="text-xs text-[#5A6F62]"><strong>Alamat:</strong> Cluster Udayana Blok UU20 RT.03/020, Perumahan Bumi Indah, Desa Sukamantri, Kecamatan Pasar Kemis, Kabupaten Tangerang, Banten 15560.</p>
-      <p class="text-xs text-[#5A6F62]"><strong>Area Layanan:</strong> Pasar Kemis, Bumi Indah, Sukamantri, Rajeg, Cikupa, Kuta Jaya, Sindang Jaya, dan seluruh area Tangerang.</p>
-      <p class="text-xs text-[#5A6F62]"><strong>Jam Buka:</strong> Setiap hari pukul 09:00 &ndash; 17:00 WIB.</p>
-      <p class="text-xs text-[#5A6F62]"><strong>Pemesanan WhatsApp:</strong> +62 812-9573-4174</p>
-      <p class="text-xs text-[#5A6F62]"><strong>Google Maps:</strong> Rating 5.0 Bintang dari 37 Ulasan Terverifikasi.</p>
+    <section>
+      <h2>Lokasi Dapur &amp; Layanan Pengiriman</h2>
+      <p><strong>Alamat:</strong> Cluster Udayana Blok UU20 RT.03/020, Perumahan Bumi Indah, Desa Sukamantri, Kecamatan Pasar Kemis, Kabupaten Tangerang, Banten 15560.</p>
+      <p><strong>Area Layanan:</strong> Pasar Kemis, Bumi Indah, Sukamantri, Rajeg, Cikupa, Kuta Jaya, Sindang Jaya, dan seluruh area Tangerang.</p>
+      <p><strong>Jam Buka:</strong> Setiap hari pukul 09:00 &ndash; 17:00 WIB.</p>
+      <p><strong>Pemesanan WhatsApp:</strong> +62 812-9573-4174</p>
+      <p><strong>Google Maps:</strong> Rating 5.0 Bintang dari 37 Ulasan Terverifikasi.</p>
     </section>
   </main>
 
@@ -465,7 +469,7 @@
   </noscript>
 
   <!-- ========================================================== -->
-  <!-- 7. IFRAME WRAPPER UTAMA DENGAN EKSPANSI KEAMANAN           -->
+  <!-- 7. IFRAME WRAPPER UTAMA (SOLID MATCHA BACKGROUND)          -->
   <!-- ========================================================== -->
   <iframe 
     id="gasFrame"
@@ -575,11 +579,6 @@
      * ====================================================================
      * SMART ENVIRONMENT DETECTOR ENGINE
      * ====================================================================
-     * Mendeteksi User-Agent secara presisi:
-     * 1. iOS Instagram: Mencegah pemuatan iframe yang pasti diblokir ITP Apple,
-     *    mematikan preloader seketika, dan menyajikan Layar Panduan Native.
-     * 2. Android Instagram: Memuat iframe dengan tombol akselerasi Chrome Intent.
-     * 3. Browser Standar (Safari, Chrome, Desktop): Pemuatan langsung tanpa hambatan.
      */
     (function initEnvironmentRouter() {
       const ua = navigator.userAgent || navigator.vendor || window.opera || "";
