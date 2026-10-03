@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   
   <!-- ========================================================== -->
+  <!-- 0. HIGH-SPEED NETWORK ACCELERATORS (PRECONNECT & DNS-PREFETCH) -->
+  <!-- ========================================================== -->
+  <link rel="preconnect" href="https://script.google.com" crossorigin>
+  <link rel="dns-prefetch" href="https://script.google.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- ========================================================== -->
   <!-- 1. PRIMARY SEO & SEARCH ENGINE METADATA                    -->
   <!-- ========================================================== -->
   <title>D'Masakin Dimsum by Mama Andra | Dimsum Mentai, Wonton &amp; Frozen Pasar Kemis Tangerang</title>
@@ -52,10 +60,9 @@
   <meta name="twitter:description" content="Pesan Dimsum Mentai, Wonton, Cake &amp; Buket Dimsum, serta Frozen Dimsum Mama Andra di Pasar Kemis Tangerang via WhatsApp.">
   <meta name="twitter:image" content="https://mama-andra.my.id/images/banner5.png">
 
-  <!-- Tailwind CSS & FontAwesome Icons CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome Icons & Google Fonts CDN (Zero Tailwind Compiler JS Overhead) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700;800;900&display=swap" rel="stylesheet">
 
   <!-- ========================================================== -->
   <!-- 5. SCHEMA.ORG LOCAL BUSINESS & RESTAURANT STRUCTURED DATA -->
@@ -159,6 +166,7 @@
   }
   </script>
 
+  <!-- PURE LIGHTWEIGHT INLINE CSS (PRESERVASI 100% VISUAL & MEMBUANG BEBAN 350KB TAILWIND JS) -->
   <style>
     html, body {
       margin: 0;
@@ -209,7 +217,7 @@
       align-items: center;
       justify-content: center;
       box-sizing: border-box;
-      transition: opacity 0.4s ease-out, visibility 0.4s ease-out;
+      transition: opacity 0.18s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.18s cubic-bezier(0.16, 1, 0.3, 1);
       pointer-events: all;
     }
 
@@ -239,8 +247,8 @@
       border: 4px solid rgba(46, 111, 64, 0.12);
       border-top: 4px solid #2E6F40;
       border-radius: 50%;
-      -webkit-animation: spin 0.9s linear infinite;
-      animation: spin 0.9s linear infinite;
+      -webkit-animation: spin 0.8s linear infinite;
+      animation: spin 0.8s linear infinite;
       box-sizing: border-box;
     }
 
@@ -293,9 +301,353 @@
       opacity: 0 !important;
       pointer-events: none !important;
     }
+
+    /* STYLING RINGKAS KHUSUS PENYELAMAT ANDROID INSTAGRAM */
+    #androidInstaTopBanner {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10002;
+      background-color: #171717;
+      color: #ffffff;
+      padding: 10px 16px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+      border-bottom: 1px solid rgba(245, 158, 11, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      box-sizing: border-box;
+    }
+    .android-banner-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+    }
+    .android-chrome-box {
+      width: 24px;
+      height: 24px;
+      border-radius: 8px;
+      background-color: #fbbf24;
+      color: #0a0a0a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+    .android-banner-text {
+      font-size: 11px;
+      font-weight: 600;
+      color: #e2e8f0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .android-banner-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .btn-open-chrome {
+      padding: 5px 12px;
+      background-color: #fbbf24;
+      color: #0a0a0a;
+      font-weight: 900;
+      font-size: 10px;
+      border-radius: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.1s;
+    }
+    .btn-open-chrome:active {
+      transform: scale(0.95);
+    }
+    .btn-close-banner {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      color: #94a3b8;
+      background: transparent;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .btn-close-banner:hover {
+      color: #ffffff;
+    }
+
+    /* STYLING RINGKAS KHUSUS PENYELAMAT IOS INSTAGRAM (SAFARI GUIDE & ARROW) */
+    #iosFloatingArrowGuide {
+      position: fixed;
+      top: 14px;
+      right: 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      pointer-events: none;
+      z-index: 10005;
+    }
+    .arrow-guide-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background-color: #fbbf24;
+      color: #0a0a0a;
+      font-weight: 900;
+      font-size: 10px;
+      padding: 6px 12px;
+      border-radius: 9999px;
+      box-shadow: 0 20px 30px rgba(0,0,0,0.4);
+      border: 1px solid #fcd34d;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+
+    #iosInstagramGuideScreen {
+      position: fixed;
+      inset: 0;
+      z-index: 10004;
+      overflow-y: auto;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: linear-gradient(180deg, #0D1A13 0%, #1A2E22 50%, #0A140E 100%);
+      color: #ffffff;
+      box-sizing: border-box;
+    }
+    .ios-blur-accent {
+      position: absolute;
+      top: -64px;
+      right: -64px;
+      width: 240px;
+      height: 240px;
+      background: rgba(16, 185, 129, 0.15);
+      border-radius: 50%;
+      filter: blur(48px);
+      pointer-events: none;
+    }
+    .ios-header {
+      text-align: center;
+      position: relative;
+      z-index: 10;
+      padding-top: 16px;
+    }
+    .ios-logo-box {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 8px;
+      margin: 0 auto 8px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .ios-brand-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 900;
+      font-size: 18px;
+      color: #ffffff;
+      text-transform: uppercase;
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+    .ios-brand-sub {
+      font-size: 9.5px;
+      color: #6ee7b7;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin: 2px 0 0;
+    }
+    .ios-guide-card {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 20px;
+      border-radius: 28px;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+      margin: auto;
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      max-width: 384px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .ios-apple-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      background-color: #fbbf24;
+      color: #0a0a0a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: 900;
+      margin: 0 auto 12px;
+      box-shadow: 0 10px 15px -3px rgba(251, 191, 36, 0.3);
+    }
+    .ios-card-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 900;
+      font-size: 16px;
+      color: #fcd34d;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      line-height: 1.25;
+      margin: 0 0 4px;
+    }
+    .ios-card-desc {
+      font-size: 12px;
+      color: #d1fae5;
+      font-weight: 600;
+      line-height: 1.35;
+      margin: 0;
+    }
+    .ios-steps-box {
+      background-color: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 16px;
+      border-radius: 16px;
+      text-align: left;
+      margin: 16px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .ios-step-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .ios-step-row.border-top {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 10px;
+    }
+    .ios-step-badge {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      font-weight: 900;
+      font-size: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .badge-amber {
+      background-color: #fbbf24;
+      color: #0a0a0a;
+    }
+    .badge-emerald {
+      background-color: #34d399;
+      color: #0a0a0a;
+    }
+    .ios-step-text {
+      font-size: 11.5px;
+      color: #e2e8f0;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+    .ios-actions-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-top: 4px;
+    }
+    .btn-copy-link {
+      width: 100%;
+      padding: 12px;
+      border-radius: 16px;
+      background-color: #2E6F40;
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: 0.025em;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+      transition: transform 0.1s, background-color 0.15s;
+    }
+    .btn-copy-link:active {
+      transform: scale(0.96);
+    }
+    .btn-copy-link:hover {
+      background-color: #255B34;
+    }
+    .btn-wa-direct {
+      width: 100%;
+      padding: 10px;
+      border-radius: 16px;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #a7f3d0;
+      border: 1px solid rgba(52, 211, 153, 0.4);
+      font-weight: 700;
+      font-size: 12px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-sizing: border-box;
+      transition: background-color 0.15s;
+    }
+    .btn-wa-direct:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    .ios-footer {
+      text-align: center;
+      position: relative;
+      z-index: 10;
+      padding-bottom: 8px;
+    }
+    .btn-force-ios {
+      font-size: 11px;
+      font-weight: 700;
+      color: rgba(110, 231, 183, 0.7);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+    }
+    .btn-force-ios:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+    .ios-footer-copy {
+      font-size: 9.5px;
+      color: #94a3b8;
+      font-weight: 500;
+      margin: 6px 0 0;
+    }
+    .hidden {
+      display: none !important;
+    }
   </style>
 </head>
-<body class="relative select-none bg-[#F4F7F5] text-[#1A2E22]">
+<body>
 
   <!-- Screen Preloader Terpusat Presisi -->
   <div id="preloader" aria-live="polite">
@@ -308,102 +660,102 @@
   </div>
 
   <!-- Banner Keluar Cepat Khusus Pengguna Android Instagram WebView -->
-  <div id="androidInstaTopBanner" class="hidden fixed top-0 left-0 right-0 z-[10002] bg-neutral-900 text-white px-4 py-2.5 shadow-xl border-b border-amber-500/40 flex items-center justify-between gap-2">
-    <div class="flex items-center gap-2 min-w-0">
-      <div class="w-6 h-6 rounded-lg bg-amber-400 text-neutral-950 flex items-center justify-center text-xs flex-shrink-0">
+  <div id="androidInstaTopBanner" class="hidden">
+    <div class="android-banner-left">
+      <div class="android-chrome-box">
         <i class="fa-brands fa-chrome"></i>
       </div>
-      <span class="text-[11px] font-semibold text-slate-200 truncate">
+      <span class="android-banner-text">
         Buka di Chrome untuk fitur nota &amp; PDF terbaik
       </span>
     </div>
-    <div class="flex items-center gap-1.5 flex-shrink-0">
-      <button type="button" onclick="openAndroidChromeIntent()" class="px-3 py-1 bg-amber-400 hover:bg-amber-500 text-neutral-950 font-black text-[10px] rounded-lg uppercase tracking-wider active:scale-95 transition">
+    <div class="android-banner-actions">
+      <button type="button" onclick="openAndroidChromeIntent()" class="btn-open-chrome">
         Buka Chrome
       </button>
-      <button type="button" onclick="dismissAndroidBanner()" class="w-6 h-6 rounded-full text-slate-400 hover:text-white flex items-center justify-center transition">
+      <button type="button" onclick="dismissAndroidBanner()" class="btn-close-banner">
         <i class="fa-solid fa-xmark text-xs"></i>
       </button>
     </div>
   </div>
 
   <!-- Floating Animated Arrow Guide untuk Pengguna iOS Instagram (Menunjuk Menu Titik Tiga Kanan Atas) -->
-  <div id="iosFloatingArrowGuide" class="hidden fixed top-3.5 right-3.5 flex flex-col items-end pointer-events-none z-[10005] animate-float-arrow">
-    <div class="flex items-center gap-1.5 bg-amber-400 text-neutral-950 font-black text-[10px] px-3 py-1.5 rounded-full shadow-2xl border border-amber-300 uppercase tracking-wider whitespace-nowrap">
+  <div id="iosFloatingArrowGuide" class="hidden animate-float-arrow">
+    <div class="arrow-guide-badge">
       <span>Ketuk Titik Tiga (•••) di Sini</span>
-      <i class="fa-solid fa-arrow-up text-[11px]"></i>
+      <i class="fa-solid fa-arrow-up text-xs"></i>
     </div>
   </div>
 
   <!-- Layar Panduan Eksklusif Native untuk Pengguna iOS Instagram (Anti-Blank Screen) -->
-  <div id="iosInstagramGuideScreen" class="hidden fixed inset-0 z-[10004] overflow-y-auto no-scrollbar p-6 flex flex-col justify-between bg-gradient-to-b from-[#0D1A13] via-[#1A2E22] to-[#0A140E] text-white">
-    <div class="absolute -top-16 -right-16 w-60 h-60 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none"></div>
+  <div id="iosInstagramGuideScreen" class="hidden">
+    <div class="ios-blur-accent"></div>
 
     <!-- Header Logo & Brand -->
-    <div class="text-center space-y-2 relative z-10 pt-4">
-      <div class="w-16 h-16 rounded-2xl bg-white/10 border border-white/20 p-2 mx-auto backdrop-blur-md shadow-xl flex items-center justify-center">
-        <svg viewBox="0 0 100 100" class="w-10 h-10 fill-none stroke-emerald-300 stroke-[2.5]">
+    <div class="ios-header">
+      <div class="ios-logo-box">
+        <svg viewBox="0 0 100 100" style="width:40px; height:40px; fill:none; stroke:#6ee7b7; stroke-width:2.5;">
           <path d="M43,24 Q39,16 43,8 M50,22 Q46,12 50,4 M57,24 Q53,16 57,8" stroke-width="4.5" stroke-linecap="round"/>
           <path d="M50,28 C30,28 20,44 20,65 C20,83 32,92 50,92 C68,92 80,83 80,65 C80,44 70,28 50,28 Z" fill="#ffffff" stroke="#2E6F40" stroke-width="3"/>
         </svg>
       </div>
       <div>
-        <h2 class="font-display font-black text-lg tracking-tight text-white uppercase">D'Masakin Dimsum</h2>
-        <p class="text-[9.5px] text-emerald-300 font-extrabold uppercase tracking-widest mt-0.5">by MAMA ANDRA</p>
+        <h2 class="ios-brand-title">D'Masakin Dimsum</h2>
+        <p class="ios-brand-sub">by MAMA ANDRA</p>
       </div>
     </div>
 
     <!-- Kotak Petunjuk Apple / Safari -->
-    <div class="bg-white/10 border border-white/15 backdrop-blur-xl p-5 sm:p-6 rounded-[28px] shadow-2xl space-y-4 my-auto relative z-10 text-center max-w-sm mx-auto w-full">
-      <div class="w-14 h-14 rounded-2xl bg-amber-400 text-neutral-950 flex items-center justify-center text-2xl font-black mx-auto shadow-lg shadow-amber-400/20 animate-pulse-glow">
+    <div class="ios-guide-card">
+      <div class="ios-apple-icon animate-pulse-glow">
         <i class="fa-brands fa-apple"></i>
       </div>
 
-      <div class="space-y-1">
-        <h3 class="font-display font-black text-base text-amber-300 uppercase tracking-wider leading-tight">
+      <div>
+        <h3 class="ios-card-title">
           Pengguna iPhone / iOS
         </h3>
-        <p class="text-xs text-emerald-100 font-semibold leading-snug">
+        <p class="ios-card-desc">
           Buka di Safari atau Chrome untuk Melihat Menu &amp; Nota PDF
         </p>
       </div>
 
       <!-- 2 Langkah Praktis -->
-      <div class="bg-black/35 border border-white/10 p-4 rounded-2xl text-left space-y-2.5">
-        <div class="flex items-start gap-3">
-          <span class="w-5 h-5 rounded-full bg-amber-400 text-neutral-900 font-black text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5 shadow-xs">1</span>
-          <span class="text-[11.5px] text-slate-200 font-medium leading-relaxed">
-            Ketuk tombol titik tiga <strong class="text-amber-300 font-bold">(•••)</strong> di pojok kanan atas layar ini.
+      <div class="ios-steps-box">
+        <div class="ios-step-row">
+          <span class="ios-step-badge badge-amber">1</span>
+          <span class="ios-step-text">
+            Ketuk tombol titik tiga <strong style="color:#fcd34d;">(•••)</strong> di pojok kanan atas layar ini.
           </span>
         </div>
-        <div class="flex items-start gap-3 border-t border-white/10 pt-2.5">
-          <span class="w-5 h-5 rounded-full bg-emerald-400 text-neutral-900 font-black text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5 shadow-xs">2</span>
-          <span class="text-[11.5px] text-slate-200 font-medium leading-relaxed">
-            Pilih <strong class="text-white font-bold">"Buka di Browser Eksternal"</strong> atau <strong class="text-white font-bold">"Buka di Safari"</strong>.
+        <div class="ios-step-row border-top">
+          <span class="ios-step-badge badge-emerald">2</span>
+          <span class="ios-step-text">
+            Pilih <strong style="color:#ffffff;">"Buka di Browser Eksternal"</strong> atau <strong style="color:#ffffff;">"Buka di Safari"</strong>.
           </span>
         </div>
       </div>
 
       <!-- Tombol Aksi Cepat -->
-      <div class="space-y-2 pt-1">
-        <button type="button" id="btnCopyLinkIos" onclick="copyWebsiteLink()" class="w-full py-3 rounded-2xl bg-[#2E6F40] hover:bg-[#255B34] text-white font-extrabold text-xs tracking-wide transition active:scale-95 shadow-md flex items-center justify-center gap-2">
+      <div class="ios-actions-group">
+        <button type="button" id="btnCopyLinkIos" onclick="copyWebsiteLink()" class="btn-copy-link">
           <i class="fa-regular fa-copy text-sm"></i>
           <span id="btnCopyLinkText">Salin Tautan (Buka di Safari)</span>
         </button>
 
-        <a href="https://wa.me/6281295734174?text=Halo%20Admin%20Dimsum%20Mama%20Andra,%20saya%20ingin%20memesan%20dimsum" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-2xl bg-white/10 hover:bg-white/20 text-emerald-200 border border-emerald-400/40 font-bold text-xs transition active:scale-95 flex items-center justify-center gap-2">
-          <i class="fa-brands fa-whatsapp text-emerald-300 text-sm"></i>
+        <a href="https://wa.me/6281295734174?text=Halo%20Admin%20Dimsum%20Mama%20Andra,%20saya%20ingin%20memesan%20dimsum" target="_blank" rel="noopener noreferrer" class="btn-wa-direct">
+          <i class="fa-brands fa-whatsapp text-sm" style="color:#6ee7b7;"></i>
           <span>Pesan via WhatsApp Langsung</span>
         </a>
       </div>
     </div>
 
     <!-- Footer Opsi Tetap Buka Iframe Sebagai Fallback -->
-    <div class="text-center space-y-2 relative z-10 pb-2">
-      <button type="button" onclick="forceLoadIframeOnIos()" class="text-[11px] font-bold text-emerald-300/70 hover:text-white hover:underline transition">
+    <div class="ios-footer">
+      <button type="button" onclick="forceLoadIframeOnIos()" class="btn-force-ios">
         Tetap Coba Buka Katalog di Sini <i class="fa-solid fa-chevron-right text-[9px] ml-1"></i>
       </button>
-      <p class="text-[9.5px] text-slate-400 font-medium">
+      <p class="ios-footer-copy">
         D'Masakin Dimsum by Mama Andra &bull; 2026
       </p>
     </div>
@@ -469,7 +821,7 @@
   </noscript>
 
   <!-- ========================================================== -->
-  <!-- 7. IFRAME WRAPPER UTAMA (SOLID MATCHA BACKGROUND)          -->
+  <!-- 7. IFRAME WRAPPER UTAMA                                    -->
   <!-- ========================================================== -->
   <iframe 
     id="gasFrame"
@@ -479,6 +831,9 @@
     sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation allow-modals allow-downloads">
   </iframe>
 
+  <!-- ========================================================== -->
+  <!-- 8. ULTRA-FAST PARALLEL ENGINE & EARLY ROUTER               -->
+  <!-- ========================================================== -->
   <script>
     const frame = document.getElementById('gasFrame');
     const preloader = document.getElementById('preloader');
@@ -489,7 +844,7 @@
     const queryParams = window.location.search || "";
 
     /**
-     * Menghilangkan layar preloader secara bersih
+     * Menghilangkan layar preloader secara instan & asimtotik halus
      */
     function hidePreloader() {
       if (preloader && preloader.style.display !== 'none') {
@@ -497,7 +852,7 @@
         preloader.style.pointerEvents = 'none';
         setTimeout(function() {
           preloader.style.display = 'none';
-        }, 350);
+        }, 180);
       }
     }
 
@@ -577,7 +932,7 @@
 
     /**
      * ====================================================================
-     * SMART ENVIRONMENT DETECTOR ENGINE
+     * SMART ENVIRONMENT DETECTOR & EARLY PARALLEL INGESTION
      * ====================================================================
      */
     (function initEnvironmentRouter() {
@@ -586,7 +941,7 @@
       const isAndroid = /Android/i.test(ua);
       const isInstagram = /Instagram|FB_IAB|FBAV|FBAN/i.test(ua);
 
-      // 1. KONDISI KHUSUS: iOS Instagram (Penyebab Layar Putih)
+      // 1. KONDISI KHUSUS: iOS Instagram (Penyelamat Anti-Blank Screen)
       if (isIos && isInstagram) {
         hidePreloader();
 
@@ -594,8 +949,6 @@
         const arrowGuide = document.getElementById('iosFloatingArrowGuide');
         if (guideScreen) guideScreen.classList.remove('hidden');
         if (arrowGuide) arrowGuide.classList.remove('hidden');
-
-        // Jangan isi frame.src agar tidak terjadi silent blocking / cross-origin crash
         return;
       }
 
@@ -605,7 +958,7 @@
         if (androidBanner) androidBanner.classList.remove('hidden');
       }
 
-      // 3. KONDISI NORMAL: Browser Standar (Safari / Chrome / Edge / Desktop)
+      // 3. KONDISI NORMAL: Pemuatan Paralel Kilat Sejak Milidetik Pertama
       frame.src = baseUrl + queryParams;
 
       // Event listener saat iframe selesai memuat
@@ -616,7 +969,7 @@
         }
       };
 
-      // Fallback Timeout: Hilangkan preloader setelah 6 detik jika jaringan lambat
+      // Fallback Timeout 6 detik untuk koneksi sangat lambat
       setTimeout(function() {
         hidePreloader();
       }, 6000);
@@ -639,14 +992,14 @@
 
     /**
      * ====================================================================
-     * POSTMESSAGE ESCAPE BRIDGE & HANDSHAKE LISTENER
+     * POSTMESSAGE ESCAPE BRIDGE & ZERO-LATENCY HANDSHAKE
      * ====================================================================
      */
     window.addEventListener('message', function(event) {
       try {
         if (!event || !event.data) return;
 
-        // Tangkap sinyal kesiapan aplikasi dari Google Apps Script
+        // Tangkap sinyal kesiapan aplikasi instan (SWR Handshake) dari Google Apps Script
         if (event.data.type === 'APP_READY') {
           hasFrameLoadedOnce = true;
           hidePreloader();
@@ -666,7 +1019,7 @@
           
           setTimeout(function() {
             try { document.body.removeChild(link); } catch (e) {}
-          }, 400);
+          }, 350);
 
           hidePreloader();
         }
